@@ -2,8 +2,18 @@
     <!-- Handler for component initialization -->
     <aura:handler name= "init" value = "{!this}" action = "{!c.doInit}"/>
     
-    <aura:attribute type="List" name="words"/>
-    <aura:attribute type="String" name="winWord"/>
+    <aura:attribute type="List" name="words" access="public"/>
+    <aura:attribute type="String" name="winWord" access="public"/>
+    <aura:attribute type="Integer" name="clickCount" access="private"/>
+
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small">
+            WORD : {!v.winWord}
+        </lightning:layoutItem>
+        <lightning:layoutItem padding="around-small">
+            Moves Left : {! (3 - v.clickCount)}
+        </lightning:layoutItem>
+    </lightning:layout>
 
     <lightning:layout multipleRows = "true">
         <lightning:layoutItem size = "4" padding = "around-small">1</lightning:layoutItem>
