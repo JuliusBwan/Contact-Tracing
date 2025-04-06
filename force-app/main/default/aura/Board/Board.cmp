@@ -2,26 +2,27 @@
     <!-- Handler for component initialization -->
     <aura:handler name= "init" value = "{!this}" action = "{!c.doInit}"/>
     
+    <aura:attribute name="mode" type="String"/>
     <aura:attribute type="List" name="words" access="public"/>
-    <aura:attribute type="String" name="winWord" access="public"/>
-    <aura:attribute type="Integer" name="clickCount" access="private"/>
+    <aura:attribute type="String" name="winWord" access="public"/> <!--default access is public-->
+    <aura:attribute type="Integer" name="clickCount" default="0"/>
+    <aura:attribute name="blockSize" type="Integer" />
 
-    <lightning:layout>
-        <lightning:layoutItem padding="around-small">
-            WORD : {!v.winWord}
-        </lightning:layoutItem>
-        <lightning:layoutItem padding="around-small">
-            Moves Left : {! (3 - v.clickCount)}
-        </lightning:layoutItem>
-    </lightning:layout>
+    <div class="board">
+        <lightning:layout>
+            <lightning:layoutItem padding="around-small">
+            <div class="slds-text-heading-medium">WORD : <span class="win-word">{!v.winWord}</span></div>
+            </lightning:layoutItem>
 
-    <lightning:layout multipleRows = "true">
-        <lightning:layoutItem size = "4" padding = "around-small">1</lightning:layoutItem>
-        <lightning:layoutItem size = "4" padding = "around-small">2</lightning:layoutItem>
-        <lightning:layoutItem size = "4" padding = "around-small">3</lightning:layoutItem>
-        <lightning:layoutItem size = "4" padding = "around-small">4</lightning:layoutItem>
-        <lightning:layoutItem size = "4" padding = "around-small">5</lightning:layoutItem>
-        <lightning:layoutItem size = "4" padding = "around-small">6</lightning:layoutItem>
-        <lightning:layoutItem size = "4" padding = "around-small">7</lightning:layoutItem>
-    </lightning:layout>
+            <lightning:layoutItem padding="around-small">
+                <div class="slds-text-heading-medium">Moves Left : {!(3 - v.clickCount)}</div>
+            </lightning:layoutItem>
+        </lightning:layout>
+
+        <lightning:layout multipleRows = "true">
+            <aura:iteration items="{!v.words}" var="word">
+                <lightning:layoutItem size = "{!v.blockSize}" padding = "around-small">{!word}</lightning:layoutItem>
+            </aura:iteration>
+        </lightning:layout>
+    </div>
 </aura:component>

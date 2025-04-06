@@ -1,13 +1,10 @@
 ({
     startGame: function(component, event, helper) {
         //access combobox values
-        let gameModeComboBox = component.find("gameMode");
-        //access the value of the combobox
+        let gameModeComboBox = component.find("gameMode");        
         let selectedValue = gameModeComboBox.get("v.value");
-        alert(`     START GAME! 
-            Mode ==> ${selectedValue}`);
-        //set the value of game mode
-        component.set("v.selectedGameMode", selectedValue)
+        //access the value of the combobox
+        component.set("v.selectedGameMode", selectedValue); //set the value of game mode    
     },
 
     reshuffleBoard: function(component, onclick, helper){
