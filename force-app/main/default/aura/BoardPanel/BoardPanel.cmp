@@ -10,7 +10,7 @@
                 <lightning:combobox 
                     name = "gameMode" 
                     label = "Game Mode" 
-                    value = "{!v.selectedGameMode}"
+                    value = "inProgress"
                     variant = "label-hidden" 
                     options = "{!v.modes}" 
                     placeholder = "Select Game Mode"
