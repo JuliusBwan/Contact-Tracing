@@ -39,7 +39,7 @@
 
             <aura:if isTrue="{! (v.selectedGameMode != null) }">
                 <lightning:layoutItem size="12">
-                    <c:Board mode="{!v.selectedGameMode}"></c:Board>
+                    <c:Board aura:id="boardComp" mode="{!v.selectedGameMode}"></c:Board>
                 </lightning:layoutItem>         
             </aura:if>          
         </lightning:layout>

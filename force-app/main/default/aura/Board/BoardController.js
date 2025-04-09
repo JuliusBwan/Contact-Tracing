@@ -24,5 +24,27 @@
         //get winning word
         const winWord = helper.getWinWord(words);
         component.set("v.winWord", winWord); //set the win word attr
+
+        //reset the board
+        helper.resetBoard(component);
+    },
+
+    blockClickEventHandler: function(component, event, helper ){
+        let clickCount = component.get("v.clickCount") + 1;
+        //get event value
+        const value = event.getParam("value");
+
+        if (value === component.get("v.winWord")){
+            //user wins
+            component.set("v.result", "YOU WIN!");
+            helper.disableBoard(component);
+        } 
+        else if (clickCount === 3){
+            //user loses
+            component.set("v.result", "YOU LOSE!");
+            helper.disableBoard(component);
+        }
+        //set the click count
+        component.set("v.clickCount", clickCount);
     }
 })

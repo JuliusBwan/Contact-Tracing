@@ -32,6 +32,21 @@
     getWinWord: function(arr){
         const randIndex = Math.floor(Math.random() * arr.length);
         return arr[randIndex];
+    },
+    disableBoard: function(component){
+        component.set("v.boardDisabled", true);
+    },
+    enableBoard: function(component){
+        component.set("v.boardDisabled", false);
+    },
+
+    resetBoard: function(component, event, helper){
+        //enable our board again
+        this.enableBoard(component);
+        //reset the click counter
+        component.set("v.clickCount", 0);
+        //reset the result
+        component.set("v.result", "")
     }
     
 })
