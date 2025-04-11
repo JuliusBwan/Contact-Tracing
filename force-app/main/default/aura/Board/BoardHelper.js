@@ -14,7 +14,11 @@
         ];
         //randomise the array 
         wordsArr = this.randomizeArray(wordsArr); //rewriting the wordsArr
-        return wordsArr.slice(0, count);
+        //open = false
+        const wordObjArray = wordsArr.map(element => {
+            return {word: element, open: false};
+        })
+        return wordObjArray.slice(0, count);
     },
     //return a randomised version of the array to randomise the words returned
     randomizeArray: function(arr){
@@ -31,7 +35,7 @@
     //retrun the winning word
     getWinWord: function(arr){
         const randIndex = Math.floor(Math.random() * arr.length);
-        return arr[randIndex];
+        return arr[randIndex].word;
     },
     disableBoard: function(component){
         component.set("v.boardDisabled", true);
@@ -47,6 +51,12 @@
         component.set("v.clickCount", 0);
         //reset the result
         component.set("v.result", "")
+    },
+
+    fireResultEvent: function(resultValue){
+        const appEvent = $A.get("e.c:ResultApplicationEvent");
+        appEvent.setParams({result: resultValue});
+        appEvent.fire();
     }
     
 })

@@ -3,6 +3,8 @@
     <aura:attribute name="modes" type="List" 
         default="[ {'label': 'Easy', 'value': 'easy'}, {'label': 'Medium', 'value': 'medium'}, {'label': 'Hard', 'value': 'hard'}]"
     />
+    <aura:attribute name="reshuffleDisabled" type="Boolean" default="true" />
+    <aura:handler event="c:ResultApplicationEvent" action="{!c.onResultHandler}"/>
 
     <lightning:card title="Word Shuffle">
         <lightning:layout horizontalAlign="center" multipleRows="true">
@@ -34,6 +36,7 @@
                     title = "Reshuffle"
                     onclick = "{!c.reshuffleBoard}"
                     aura:id = "reshuffleId"
+                    disabled="{!v.reshuffleDisabled}"
                 />
             </lightning:layoutItem>  
 
